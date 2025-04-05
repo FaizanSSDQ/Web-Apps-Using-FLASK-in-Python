@@ -1,0 +1,21 @@
+
+def Generator(img_path):
+    # img_path = "D:\RAG Technologies\Building Generative AI-Powered Applications with Python\Check1.png"
+    # print("Inside Function")
+    img_path = img_path
+    image = Image.open(img_path).convert('RGB')
+    # image.show()
+    text = 'the image of '
+    # print("pillow")
+    inputs = processor(images=image , text = text , return_tensors='pt')
+    # Generate a caption for the image
+    # print("inputssssss")
+    outputs = model.generate(**inputs, max_length=50)
+    # Decode the generated tokens to text
+    # print("Outputssssss")
+    caption = processor.decode(outputs[0], skip_special_tokens=True)
+    # print(caption)
+    caption = "this is fazool"
+    # print("captionsssss")
+    # Print the caption
+    return caption
